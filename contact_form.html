@@ -106,7 +106,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Phone Number</label>
-                    <input type="tel" id="phone-number" name="phone-number" required>
+                    <input type="tel" id="phone-number" name="phone-number" required oninput="formatPhoneNumber(this)">
                 </div>
                 <div class="form-group">
                     <label>Email Address</label>
@@ -116,6 +116,21 @@
 
         </form>
     </div>
+
+    <script>
+        // Function to format the phone number as (XXX) XXX-XXXX
+        function formatPhoneNumber(input) {
+            let phoneNumber = input.value.replace(/\D/g, ''); // Remove non-digit characters
+            if (phoneNumber.length <= 3) {
+                phoneNumber = phoneNumber.replace(/(\d{1,3})/, '($1');
+            } else if (phoneNumber.length <= 6) {
+                phoneNumber = phoneNumber.replace(/(\d{1,3})(\d{1,3})/, '($1) $2');
+            } else {
+                phoneNumber = phoneNumber.replace(/(\d{1,3})(\d{1,3})(\d{1,4})/, '($1) $2-$3');
+            }
+            input.value = phoneNumber;
+        }
+    </script>
 
 </body>
 </html>
