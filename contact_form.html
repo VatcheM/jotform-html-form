@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgUHLrsI_HtK2X2mMFGgb11zcne9g4K30&libraries=places"></script>
     <style>
         /* Ensure no scrollbars */
         html, body {
@@ -16,27 +15,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: transparent; /* Ensuring transparency */
         }
 
         body {
             font-family: Arial, sans-serif;
-            padding: 0; /* Removing any padding that might be restricting the form */
+            padding: 10px;
         }
 
-        /* Form container - Adjusted for full visibility */
+        /* Form container */
         .form-container {
             width: 100%;
-            max-width: 500px; /* Keeps it manageable on all screen sizes */
-            height: 900px; /* Ensuring height is large enough */
+            max-width: 500px;
+            margin: auto;
             padding: 20px;
-            overflow: visible; /* Ensures dropdowns are not hidden */
-            background: transparent; /* No background */
-            border: none; /* Removes any default borders */
-            box-shadow: none; /* Removes any floating shadow */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
         }
 
         /* Make field labels normal weight */
@@ -62,7 +53,7 @@
             margin-right: 0;
         }
 
-        /* Full-width fields like Company and Shipping Address */
+        /* Full-width fields like Company Name */
         .full-width {
             margin-bottom: 15px; /* Uniform spacing */
         }
@@ -74,11 +65,6 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 14px;
-        }
-
-        /* Adjust the width of the shipping address field to ensure visibility */
-        #shipping-address {
-            width: 100%;
         }
     </style>
 </head>
@@ -117,38 +103,8 @@
                 </div>
             </div>
 
-            <!-- Shipping Address -->
-            <div class="full-width">
-                <label>Shipping Address</label>
-                <input type="text" id="shipping-address" name="shipping-address" placeholder="Start typing your address..." required>
-            </div>
-
         </form>
     </div>
-
-    <script>
-        function initAutocomplete() {
-            var input = document.getElementById('shipping-address');
-            if (!input) return;
-
-            setTimeout(function() {
-                var autocomplete = new google.maps.places.Autocomplete(input, { types: ['geocode'] });
-
-                autocomplete.addListener('place_changed', function() {
-                    var place = autocomplete.getPlace();
-                    console.log(place);
-                });
-            }, 500); // Small delay to ensure API is fully loaded
-        }
-
-        google.maps.event.addDomListener(window, 'load', initAutocomplete);
-
-        // Ensure full height on load
-        window.onload = function() {
-            document.body.style.height = '900px'; /* Forces height */
-            document.body.style.overflow = 'hidden';
-        };
-    </script>
 
 </body>
 </html>
