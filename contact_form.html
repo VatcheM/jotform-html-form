@@ -3,80 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jotform Iframe Embed with Google Places API</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgUHLrsI_HtK2X2mMFGgb11zcne9g4K30&libraries=places&callback=initAutocomplete" async defer></script>
+    <title>Contact Form</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&libraries=places"></script>
     <style>
-        /* Style the form container for a responsive iframe */
+        /* Ensure no scrollbars */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+        }
+
+        /* Form container */
         .form-container {
             width: 100%;
-            max-width: 700px; /* Adjust the max-width of the form */
-            min-height: 600px; /* Ensure enough height for the content */
-            height: auto; /* Allow dynamic resizing */
+            max-width: 500px;
             margin: auto;
             background: #f9f9f9;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden; /* Prevent scrollbars */
+            overflow: auto; /* Allow the form to scroll within the container */
         }
 
-        /* Styling the form inputs and labels */
-        .form-container input,
-        .form-container label {
+        /* Make field labels normal weight */
+        label {
+            font-weight: normal !important;
             font-size: 14px;
-            margin-bottom: 10px;
-            display: block;
+            color: #333;
+        }
+
+        /* Row layout for fields */
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px; /* Uniform spacing between rows */
+        }
+
+        .form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .form-group:last-child {
+            margin-right: 0;
+        }
+
+        /* Full-width fields like Company and Shipping Address */
+        .full-width {
+            margin-bottom: 15px; /* Uniform spacing */
+        }
+
+        /* Input fields */
+        input {
             width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
         }
 
-        /* Styling the address field specifically */
-        .form-container .address-field {
-            font-size: 14px;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+        /* Adjust the width of the shipping address field to ensure visibility */
+        #shipping-address {
             width: 100%;
         }
     </style>
 </head>
 <body>
 
-<div class="form-container">
-    <iframe id="myIframe" src="https://vatchem.github.io/jotform-html-form/contact_form.html" width="100%" height="800" frameborder="0" loading="eager"></iframe>
-</div>
+    <div class="form-container">
+        <form id="contact-form">
+            
+            <!-- First Name / Last Name -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                </div>
+            </div>
 
-<script>
-    // Initialize the Google Places Autocomplete
-    function initAutocomplete() {
-        const addressField = document.querySelector('.address-field'); // Adjust selector if needed
-        const autocomplete = new google.maps.places.Autocomplete(addressField);
+            <!-- Company Name -->
+            <div class="full-width">
+                <label>Company Name</label>
+                <input type="text" id="company-name" name="company-name" required>
+            </div>
 
-        // Ensure the autocomplete restricts the results to address components
-        autocomplete.setTypes(['geocode']);
+            <!-- Phone Number / Email -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone-number" name="phone-number" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email-address" name="email-address" required>
+                </div>
+            </div>
 
-        // You can also add event listeners here to handle when the user selects an address
-        autocomplete.addListener('place_changed', function () {
-            const place = autocomplete.getPlace();
-            if (!place.geometry) {
-                return;
-            }
-            // Do something with the selected address (if needed)
-        });
-    }
+            <!-- Shipping Address -->
+            <div class="full-width">
+                <label>Shipping Address</label>
+                <input type="text" id="shipping-address" name="shipping-address" placeholder="Start typing your address..." required>
+            </div>
 
-    // When the iframe is loaded and displayed, reload the iframe if needed
-    document.addEventListener('DOMContentLoaded', function() {
-        const iframe = document.querySelector('#myIframe');  // Target the iframe
-        const formCard = document.querySelector('.iframe-card');  // Adjust this to match the card class
+        </form>
+    </div>
 
-        // Event listener to reload iframe on click
-        if (formCard) {
-            formCard.addEventListener('click', function() {
-                iframe.src = iframe.src;  // Force iframe reload to re-render it
+    <script>
+        function initAutocomplete() {
+            var input = document.getElementById('shipping-address');
+            var autocomplete = new google.maps.places.Autocomplete(input, { types: ['geocode'] });
+
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                console.log(place);
             });
         }
-    });
-</script>
+
+        google.maps.event.addDomListener(window, 'load', initAutocomplete);
+
+        // Adjust iframe height dynamically
+        window.onload = function() {
+            document.body.style.height = window.innerHeight + 'px';
+            document.body.style.overflow = 'hidden';
+        };
+    </script>
 
 </body>
 </html>
