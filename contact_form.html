@@ -29,7 +29,6 @@
             margin: auto;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* Make field labels normal weight */
@@ -48,7 +47,7 @@
 
         .form-group {
             flex: 1;
-            margin-right: 5px; /* Add small gap between fields */
+            margin-right: 10px; /* Add small gap between fields */
         }
 
         .form-group:last-child {
@@ -69,17 +68,19 @@
         input {
             width: 100%;
             padding: 10px;
-            border: 2px solid black !important; /* Always black border */
+            border: 1px solid black !important; /* Thinner black border */
             border-radius: 4px;
             font-size: 14px;
             outline: none; /* Remove blue outline */
             background-color: white;
             color: black;
+            box-shadow: none !important; /* Remove lifted shadow effect */
         }
 
         /* Ensure the border remains black on focus */
         input:focus {
             border-color: black !important;
+            box-shadow: none !important; /* Prevent any shadow effect */
         }
     </style>
 </head>
