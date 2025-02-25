@@ -45,15 +45,11 @@
             justify-content: space-between;
             gap: 10px; /* Add separation between fields */
             margin-bottom: 12px; /* Space between rows */
+            width: 100%;
         }
 
         .form-group {
-            flex: 1; /* Allow equal width for each field */
-            margin-right: 10px; /* Space between fields */
-        }
-
-        .form-group:last-child {
-            margin-right: 0;
+            width: 48%; /* Ensures fields take up equal width */
         }
 
         /* Full-width fields like Company Name */
@@ -64,7 +60,7 @@
 
         /* Input fields */
         input {
-            width: 100%;
+            width: 100%; /* Ensure inputs fit the container */
             padding: 8px; /* Slightly smaller padding */
             border: 1px solid black !important; /* Thin black border */
             border-radius: 4px;
