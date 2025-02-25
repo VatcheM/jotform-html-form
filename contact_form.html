@@ -25,13 +25,14 @@
         /* Form container */
         .form-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 480px; /* Standardized width */
             margin: auto;
             padding: 20px;
             border-radius: 8px;
+            background: transparent;
         }
 
-        /* Make field labels normal weight */
+        /* Labels */
         label {
             font-weight: normal !important;
             font-size: 14px;
@@ -42,45 +43,38 @@
         .form-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px; /* Uniform spacing between rows */
+            gap: 10px; /* Add separation between fields */
+            margin-bottom: 12px; /* Space between rows */
         }
 
         .form-group {
             flex: 1;
-            margin-right: 10px; /* Add small gap between fields */
-        }
-
-        .form-group:last-child {
-            margin-right: 0; /* Prevent extra spacing on the last field in each row */
-        }
-
-        /* Reduce width further so fields don’t touch */
-        .form-group input {
-            width: calc(100% - 10px);
         }
 
         /* Full-width fields like Company Name */
         .full-width {
-            margin-bottom: 15px; /* Uniform spacing */
+            margin-bottom: 12px; /* Uniform spacing */
+            width: 100%;
         }
 
         /* Input fields */
         input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid black !important; /* Thinner black border */
+            padding: 8px; /* Slightly smaller padding */
+            border: 1px solid black !important; /* Thin black border */
             border-radius: 4px;
             font-size: 14px;
-            outline: none; /* Remove blue outline */
+            outline: none;
             background-color: white;
             color: black;
-            box-shadow: none !important; /* Remove lifted shadow effect */
+            box-shadow: none !important; /* Remove any input field shadow */
+            appearance: none; /* Prevent browser-specific styles */
         }
 
-        /* Ensure the border remains black on focus */
+        /* Ensure the border remains black on focus, no extra thickness */
         input:focus {
             border-color: black !important;
-            box-shadow: none !important; /* Prevent any shadow effect */
+            box-shadow: none !important; /* Prevent any focus shadow effect */
         }
     </style>
 </head>
