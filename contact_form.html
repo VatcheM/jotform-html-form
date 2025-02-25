@@ -32,6 +32,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            overflow: auto; /* Allow the form to scroll within the container */
         }
 
         /* Make field labels normal weight */
@@ -45,7 +46,7 @@
         .form-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px; /* Uniform spacing */
+            margin-bottom: 15px; /* Uniform spacing between rows */
         }
 
         .form-group {
@@ -57,6 +58,7 @@
             margin-right: 0;
         }
 
+        /* Full-width fields like Company and Shipping Address */
         .full-width {
             margin-bottom: 15px; /* Uniform spacing */
         }
@@ -70,6 +72,7 @@
             font-size: 14px;
         }
 
+        /* Adjust the width of the shipping address field to ensure visibility */
         #shipping-address {
             width: 100%;
         }
