@@ -6,15 +6,15 @@
     <title>Contact Form</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgUHLrsI_HtK2X2mMFGgb11zcne9g4K30&libraries=places"></script>
     <style>
-        /* Remove scrollbar */
+        /* Ensure no scrollbars */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
-            overflow: hidden; /* Prevents scrolling */
+            overflow: hidden;
             display: flex;
-            align-items: center; /* Centers content */
+            align-items: center;
             justify-content: center;
         }
 
@@ -23,7 +23,9 @@
             padding: 10px;
         }
 
+        /* Form container */
         .form-container {
+            width: 100%;
             max-width: 500px;
             margin: auto;
             background: #f9f9f9;
@@ -32,31 +34,34 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* Make field labels normal weight */
         label {
             font-weight: normal !important;
             font-size: 14px;
             color: #333;
         }
 
+        /* Row layout for fields */
         .form-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Uniform spacing */
         }
 
         .form-group {
             flex: 1;
-            margin-right: 15px;
+            margin-right: 10px;
         }
 
         .form-group:last-child {
             margin-right: 0;
         }
 
-        .form-group, .full-width {
-            margin-bottom: 20px;
+        .full-width {
+            margin-bottom: 15px; /* Uniform spacing */
         }
 
+        /* Input fields */
         input {
             width: 100%;
             padding: 10px;
@@ -127,7 +132,7 @@
 
         google.maps.event.addDomListener(window, 'load', initAutocomplete);
 
-        // Fix #2: Ensure Jotform Iframe Adjusts Properly
+        // Adjust iframe height dynamically
         window.onload = function() {
             document.body.style.height = window.innerHeight + 'px';
             document.body.style.overflow = 'hidden';
