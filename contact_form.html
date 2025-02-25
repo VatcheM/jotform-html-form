@@ -55,6 +55,11 @@
             margin-right: 0; /* Prevent extra spacing on the last field in each row */
         }
 
+        /* Reduce width slightly so fields don’t touch */
+        .form-group input {
+            width: calc(100% - 5px);
+        }
+
         /* Full-width fields like Company Name */
         .full-width {
             margin-bottom: 15px; /* Uniform spacing */
@@ -64,12 +69,55 @@
         input {
             width: 100%;
             padding: 10px;
-            border: 1px solid black; /* Black border */
+            border: 2px solid black !important; /* Always black border */
             border-radius: 4px;
             font-size: 14px;
+            outline: none; /* Remove blue outline */
+        }
+
+        /* Prevent borders from changing color when clicked */
+        input:focus {
+            border-color: black !important;
         }
     </style>
 </head>
 <body>
 
-    <
+    <div class="form-container">
+        <form id="contact-form">
+            
+            <!-- First Name / Last Name -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                </div>
+            </div>
+
+            <!-- Company Name -->
+            <div class="full-width">
+                <label>Company Name</label>
+                <input type="text" id="company-name" name="company-name" required>
+            </div>
+
+            <!-- Phone Number / Email -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone-number" name="phone-number" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email-address" name="email-address" required>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>
