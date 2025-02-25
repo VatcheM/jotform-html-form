@@ -6,27 +6,14 @@
     <title>Jotform Iframe Embed with Google Places API</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgUHLrsI_HtK2X2mMFGgb11zcne9g4K30&libraries=places&callback=initAutocomplete" async defer></script>
     <style>
-        /* Style the form container for a responsive iframe */
+        /* Simplified the container style to remove unnecessary padding or background */
         .form-container {
             width: 100%;
-            max-width: 700px; /* Adjust the max-width of the form */
+            max-width: 100%; /* Ensure the container takes the full width */
             min-height: 600px; /* Ensure enough height for the content */
             height: auto; /* Allow dynamic resizing */
             margin: auto;
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             overflow: hidden; /* Prevent scrollbars */
-        }
-
-        /* Styling the form inputs and labels */
-        .form-container input,
-        .form-container label {
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: block;
-            width: 100%;
         }
 
         /* Styling the address field specifically */
@@ -42,7 +29,7 @@
 <body>
 
 <div class="form-container">
-    <iframe id="myIframe" src="https://vatchem.github.io/jotform-html-form/contact_form.html" width="100%" height="800" frameborder="0" loading="eager"></iframe>
+    <iframe id="myIframe" src="https://vatchem.github.io/jotform-html-form/contact_form.html" width="100%" height="1000px" frameborder="0" loading="eager"></iframe>
 </div>
 
 <script>
