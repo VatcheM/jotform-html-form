@@ -55,9 +55,9 @@
             margin-right: 0; /* Prevent extra spacing on the last field in each row */
         }
 
-        /* Reduce width slightly so fields don’t touch */
+        /* Reduce width further so fields don’t touch */
         .form-group input {
-            width: calc(100% - 5px);
+            width: calc(100% - 10px);
         }
 
         /* Full-width fields like Company Name */
@@ -73,9 +73,11 @@
             border-radius: 4px;
             font-size: 14px;
             outline: none; /* Remove blue outline */
+            background-color: white;
+            color: black;
         }
 
-        /* Prevent borders from changing color when clicked */
+        /* Ensure the border remains black on focus */
         input:focus {
             border-color: black !important;
         }
