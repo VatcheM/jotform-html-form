@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgUHLrsI_HtK2X2mMFGgb11zcne9g4K30&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&libraries=places"></script>
     <style>
         /* Ensure no scrollbars */
         html, body {
@@ -23,17 +23,19 @@
             padding: 10px;
         }
 
-        /* Form container */
+        /* Form container without gray background */
         .form-container {
             width: 100%;
             max-width: 500px;  /* Width remains the same */
             height: 900px; /* Double the height compared to the original value */
             margin: auto;
-            background: #f9f9f9;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             overflow: auto; /* Allow the form to scroll within the container if necessary */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         /* Make field labels normal weight */
