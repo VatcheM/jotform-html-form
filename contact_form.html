@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgUHLrsI_HtK2X2mMFGgb11zcne9g4K30&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&libraries=places"></script>
     <style>
         /* Remove scrollbar */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
+            width: 100%;
             overflow: hidden; /* Prevents scrolling */
+            display: flex;
+            align-items: center; /* Centers content */
+            justify-content: center;
         }
 
         body {
@@ -37,7 +41,7 @@
         .form-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px; /* Ensures even spacing */
+            margin-bottom: 20px;
         }
 
         .form-group {
@@ -49,9 +53,8 @@
             margin-right: 0;
         }
 
-        /* Ensuring consistent spacing */
         .form-group, .full-width {
-            margin-bottom: 20px; /* Matches row spacing */
+            margin-bottom: 20px;
         }
 
         input {
@@ -123,6 +126,12 @@
         }
 
         google.maps.event.addDomListener(window, 'load', initAutocomplete);
+
+        // Fix #2: Ensure Jotform Iframe Adjusts Properly
+        window.onload = function() {
+            document.body.style.height = window.innerHeight + 'px';
+            document.body.style.overflow = 'hidden';
+        };
     </script>
 
 </body>
