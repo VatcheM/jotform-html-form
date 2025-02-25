@@ -16,27 +16,27 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background: transparent; /* Ensuring transparency */
         }
 
         body {
             font-family: Arial, sans-serif;
-            padding: 10px;
+            padding: 0; /* Removing any padding that might be restricting the form */
         }
 
-        /* Form container without gray background */
+        /* Form container - Adjusted for full visibility */
         .form-container {
             width: 100%;
-            max-width: 500px;  /* Width remains the same */
-            height: 900px; /* Height increased */
-            margin: auto;
+            max-width: 500px; /* Keeps it manageable on all screen sizes */
+            height: 900px; /* Ensuring height is large enough */
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            overflow: auto; /* Allow the form to scroll within the container if necessary */
+            overflow: visible; /* Ensures dropdowns are not hidden */
+            background: transparent; /* No background */
+            border: none; /* Removes any default borders */
+            box-shadow: none; /* Removes any floating shadow */
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            background: transparent; /* No background */
         }
 
         /* Make field labels normal weight */
@@ -129,19 +129,23 @@
     <script>
         function initAutocomplete() {
             var input = document.getElementById('shipping-address');
-            var autocomplete = new google.maps.places.Autocomplete(input, { types: ['geocode'] });
+            if (!input) return;
 
-            autocomplete.addListener('place_changed', function() {
-                var place = autocomplete.getPlace();
-                console.log(place);
-            });
+            setTimeout(function() {
+                var autocomplete = new google.maps.places.Autocomplete(input, { types: ['geocode'] });
+
+                autocomplete.addListener('place_changed', function() {
+                    var place = autocomplete.getPlace();
+                    console.log(place);
+                });
+            }, 500); // Small delay to ensure API is fully loaded
         }
 
         google.maps.event.addDomListener(window, 'load', initAutocomplete);
 
-        // Adjust iframe height dynamically
+        // Ensure full height on load
         window.onload = function() {
-            document.body.style.height = window.innerHeight + 'px';
+            document.body.style.height = '900px'; /* Forces height */
             document.body.style.overflow = 'hidden';
         };
     </script>
