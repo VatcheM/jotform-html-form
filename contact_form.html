@@ -44,14 +44,15 @@
             margin-bottom: 15px; /* Uniform spacing between rows */
         }
 
-        .form-group {
-            flex: 1;
-            margin-right: 10px;
-        }
+	.form-group {
+	    flex: 1;
+	    margin-right: 5px; /* Add a small gap between fields */
+	}
+	
+	.form-group:last-child {
+	    margin-right: 0; /* Prevent extra spacing on the last field in each row */
+	}
 
-        .form-group:last-child {
-            margin-right: 0;
-        }
 
         /* Full-width fields like Company Name */
         .full-width {
